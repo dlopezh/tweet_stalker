@@ -6,10 +6,10 @@ namespace :tweet do
 	task :fetch => [:environment] do |t|
 
 		TweetStream.configure do |config|
-		  config.consumer_key       = 'Zi8g3PAM39tuvLtgplh1og'
-		  config.consumer_secret    = 'wToe6QXCgU7PSOufHqx46wFpGZeUNuvOsiNqciZo8c'
-		  config.oauth_token        = '95704672-bag8C7jJBm8XEKjdikBqDwaJOqCfLjhbFZ28JI5jH'
-		  config.oauth_token_secret = 'HEtC05N8b6MnhsGrzYlFaJ0MzudHkqVbFQIAZpqhrvZ9G'
+		  config.consumer_key       = ENV["TWITTER_CONSUMER_KEY"]
+		  config.consumer_secret    = ENV["TWITTER_CONSUMER_SECRET"]
+		  config.oauth_token        = ENV["TWITTER_TOKEN"]
+		  config.oauth_token_secret = ENV["TWITTER_TOKEN_SECRET"]
 		  config.auth_method        = :oauth
 		end
 
