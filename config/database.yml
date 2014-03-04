@@ -1,0 +1,23 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: tweet_stalker_development
+  pool: 5
+  username: Lopez
+  password:
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: tweet_stalker_test
+  pool: 5
+  username: Lopez
+  password:
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: tweet_stalker_production
+  pool: 5
+  username: Lopez
+  password:
