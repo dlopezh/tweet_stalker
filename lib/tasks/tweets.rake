@@ -51,7 +51,7 @@ namespace :tweet do
             puts status.geo.coordinates[1]
            Tweet.create ({
             name: status.user.name,
-            content: status.text,
+            content: status.text.gsub!(/\B[@#]\S+\b/, ''),
             longitude: status.geo.coordinates[0],
             latitude: status.geo.coordinates[1]
             })

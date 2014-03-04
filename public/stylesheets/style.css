@@ -1,8 +1,12 @@
 body {
-	background-color: #191919;
+	background-color: #191919 !important;
 }
 
 #tweet {
-	color: white;
-	position: absolute;
+	height: 20px;
+}
+
+#tweet-text {
+	text-align: center;
+	line-height: 100px;
 }
