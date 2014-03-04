@@ -48,12 +48,12 @@ function mapPoints(){
                     $('#tweet-text').text(d.content);
                 })
                 .on("mouseout", function(d){
-                    d3.select(this).attr("r", 0.5);
+                    d3.select(this).attr("r", 1);
                     $('#tweet-text').text("");
                 })
                 .transition()
                 .duration(700)
-                .attr("r",0.5)
+                .attr("r",1)
                 .attr("fill", "steelblue")
                 .attr("cx", function(d) {
                     return map.projection([d.latitude, d.longitude])[0];
