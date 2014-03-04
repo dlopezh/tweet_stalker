@@ -3,8 +3,14 @@
 <script src="javascripts/datamaps.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <link rel="stylesheet" href="stylesheets/style.css">
+<div id="tweet">
+    <p id="tweet-text"></p>
+</div>
 <div id="container"></div>
 <script>
+
+    //Creates map
+
     var map = new Datamap({
         element: document.getElementById('container'),
         scope: 'usa',
@@ -20,14 +26,34 @@
             }
     });
 
+    var json_data = d3.json("/tweets", function(error, json) {
+                if (error) return console.warn(error);
+                json_data = json
+     });
+
+function mapPoints(){
     d3.json("/tweets", function(error, json) {
         if (error) return console.warn(error);
-         data = json
+                data = json
+
+
                 map.svg.selectAll("circle")
                 .data(data)
                 .enter()
                 .append("circle")
-                .attr("r",1)
+                .attr("r",10)
+                .attr("fill", "steelblue")
+                .on("mouseover",function(d){
+                    d3.select(this).attr("r", 5);
+                    $('#tweet-text').text(d.content);
+                })
+                .on("mouseout", function(d){
+                    d3.select(this).attr("r", 0.5);
+                    $('#tweet-text').text("");
+                })
+                .transition()
+                .duration(700)
+                .attr("r",0.5)
                 .attr("fill", "steelblue")
                 .attr("cx", function(d) {
                     return map.projection([d.latitude, d.longitude])[0];
@@ -35,30 +61,14 @@
                 .attr("cy", function(d) {
                     return map.projection([d.latitude, d.longitude])[1];
                 })
-
-
-
     });
-    
+
+};
 
 
-				
-	    // var data = [
+$(function() {
 
-    // {lat: -73.973, lon: 40.764},
-    // {lat: -73.973, lon: 43.764},
-    // {lat: -76.973, lon: 42.764},
-    // {lat: -83.973, lon: 40.764},
-    // {lat: -73.973, lon: 44.764},
-    // {lat: -73.973, lon: 43.764},
-    // {lat: -73.973, lon: 40.764},
-    // {lat: -73.973, lon: 41.764},
-    // {lat: -73.973, lon: 40.764},
-    // {lat: -149.96, lon: 61.176} 
-
-    // ]
-			
-
-
+    setInterval(mapPoints, 2000);
+});
 
 </script>

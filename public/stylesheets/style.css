@@ -1,3 +1,8 @@
 body {
 	background-color: #191919;
 }
+
+#tweet {
+	color: white;
+	position: absolute;
+}

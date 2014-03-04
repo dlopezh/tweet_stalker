@@ -3,7 +3,7 @@ require 'colorize'
 
 namespace :tweet do 
   desc "opens tweetstream and writes to db"
-  task :fetch => [:environment] do |t|
+  task :fetch, [:arguments] => [:environment] do |t, args|
 
     TweetStream.configure do |config|
       config.consumer_key       = ENV["TWITTER_CONSUMER_KEY"]
@@ -45,7 +45,7 @@ namespace :tweet do
         end
 
         @client.locations(-124.8,25.8,-74.4,43.3) do |status|
-          if status.is_a?(Twitter::Tweet) && status.geo.respond_to?('coordinates') && status.reply? == false && status.text.to_s.include?("home")
+          if status.is_a?(Twitter::Tweet) && status.geo.respond_to?('coordinates') && status.reply? == false && status.text.to_s.include?(args[:arguments])
             puts status.text.green
             puts status.geo.coordinates[0]
             puts status.geo.coordinates[1]
@@ -59,4 +59,8 @@ namespace :tweet do
         end
 
   end
+
+    task :clear => [:environment] do |t|
+      Tweet.delete_all
+    end 
 end
