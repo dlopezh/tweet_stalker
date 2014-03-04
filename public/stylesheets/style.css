@@ -9,4 +9,6 @@ body {
 #tweet-text {
 	text-align: center;
 	line-height: 100px;
+	position: absolute;
+	color: grey;
 }
