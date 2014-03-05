@@ -1,1 +1,1 @@
-worker:  bundle exec rake tweet:fetch[" home ", "vacation", "left home", "leaving"]
+worker:  bundle exec rake tweet:fetch["home, vacation, leaving, left, alone"]
