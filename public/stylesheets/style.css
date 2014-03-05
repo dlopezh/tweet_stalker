@@ -3,7 +3,6 @@ body {
 }
 
 #tweet {
-	height: 20px;
 }
 
 #tweet-text {
@@ -11,4 +10,13 @@ body {
 	line-height: 100px;
 	position: absolute;
 	color: grey;
+	font-size: 24px;
+	float: right;
+}
+
+h1 {
+}
+
+svg {
+	margin-top: -10px;
 }
