@@ -52,6 +52,11 @@ function mapPoints(){
                     d3.select(this).attr("r", 5);
                     $('#tweet-text').text(d.content);
                 })
+                .on("click",function(d){
+                    d3.select(this)
+                    window.open('http://maps.google.com/maps?q='+ d.longitude + ',' + d.latitude, '_blank');
+                    console.log(d.latitude)
+                })
                 .on("mouseout", function(d){
                     d3.select(this).attr("r", 1);
                     $('#tweet-text').text("");
@@ -72,7 +77,6 @@ function mapPoints(){
 
 
 $(function() {
-
     setInterval(mapPoints, 2000);
 });
 
