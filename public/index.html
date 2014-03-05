@@ -39,9 +39,7 @@
 
 //Draws Points on map
 
-function point_count(){
-  $('#count').text(json_data.length)
-}    
+ 
 
 function mapPoints(){
     d3.json("/tweets", function(error, json) {
@@ -85,7 +83,6 @@ function mapPoints(){
 
 $(function() {
     setInterval(mapPoints, 2000);
-    setInterval(point_count, 1000);
 });
 
 </script>
