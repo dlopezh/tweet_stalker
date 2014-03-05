@@ -49,6 +49,7 @@ namespace :tweet do
            status.geo.respond_to?('coordinates') &&
            status.reply? == false && 
            status.text.to_s.include?(args[:arguments])
+           puts status.text.green
            Tweet.create ({
             name: status.user.name,
             content: status.text,
