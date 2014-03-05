@@ -45,7 +45,10 @@ namespace :tweet do
         end
 
         @client.locations(-124.8,25.8,-74.4,43.3) do |status|
-          if status.is_a?(Twitter::Tweet) && status.geo.respond_to?('coordinates') && status.reply? == false && status.text.to_s.include?(args[:arguments])
+          if status.is_a?(Twitter::Tweet) && 
+           status.geo.respond_to?('coordinates') &&
+           status.reply? == false && 
+           status.text.to_s.include?(args[:arguments])
            Tweet.create ({
             name: status.user.name,
             content: status.text,
