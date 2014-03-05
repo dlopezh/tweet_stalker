@@ -6,6 +6,7 @@
 <link rel="stylesheet" href="stylesheets/bootstrap.min.css">
 <div class="container">
     <h1>TweetStalker</h1>
+    <p id="count"></p>
         <div id="tweet">
         <p id="tweet-text"></p>
     </div>
@@ -41,6 +42,8 @@ function mapPoints(){
         if (error) return console.warn(error);
                 data = json
 
+                $('#count').text(json_data.length)
+                console.log(json_data.length)
 
                 map.svg.selectAll("circle")
                 .data(data)
