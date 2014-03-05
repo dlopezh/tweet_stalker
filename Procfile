@@ -1,1 +1,1 @@
-worker:  bundle exec rake tweet:fetch[" home "]
+worker:  bundle exec rake tweet:fetch[" party "]
