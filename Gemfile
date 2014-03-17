@@ -34,9 +34,9 @@ end
 
 gem "tweetstream"
 
-gem 'pusher'
-
 gem 'colorize'
+
+gem 'newrelic_rpm'
 
 group :production do
    gem 'rails_12factor'
