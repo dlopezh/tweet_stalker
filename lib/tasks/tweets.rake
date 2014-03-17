@@ -1,7 +1,7 @@
 require 'tweetstream'
 require 'colorize'
 
-namespace :tweet do 
+namespace :tweet do
   desc "opens tweetstream and writes to db"
   task :fetch, [:arguments] => [:environment] do |t, args|
 
@@ -26,42 +26,41 @@ namespace :tweet do
     end
 
     @client.on_limit do |discarded_count|
-          puts "Dicarded Count: #{discarded_count}".red
-        end
+      puts "Dicarded Count: #{discarded_count}".red
+    end
 
     @client.on_error do |message|
-         puts "Error message: #{message}".red
-      @client.stop          
-        end
+      puts "Error message: #{message}".red
+      @client.stop
+    end
 
-        @client.on_no_data_received do
-          puts "No data received".red
-          @client.stop
-        end
+    @client.on_no_data_received do
+      puts "No data received".red
+      @client.stop
+    end
 
-        @client.on_enhance_your_calm do
-          puts "Account blocked".red
-          @client.stop
-        end
+    @client.on_enhance_your_calm do
+      puts "Account blocked".red
+      @client.stop
+    end
 
-        @client.locations(-124.8,25.8,-74.4,43.3) do |status|
-          if status.is_a?(Twitter::Tweet) && 
-           status.geo.respond_to?('coordinates') &&
-           status.reply? == false && 
-           status.text.to_s.include?(args[:arguments])
-           puts status.text.green
-           Tweet.create ({
-            name: status.user.name,
-            content: status.text,
-            longitude: status.geo.coordinates[0],
-            latitude: status.geo.coordinates[1]
-            })
-          end
-        end
-
+    @client.locations(-124.8,25.8,-74.4,43.3) do |status|   # Tweets that are within the US
+      if status.is_a?(Twitter::Tweet) &&                    # Checks if tweet is a proper tweet object
+          status.geo.respond_to?('coordinates') &&          # Checks if tweet has coordinates
+          status.reply? == false &&                         # Checks that tweet is not a reply
+          status.text.to_s.include?(args[:arguments])       
+        Tweet.create ({
+          name: status.user.name,
+          content: status.text,
+          longitude: status.geo.coordinates[0],
+          latitude: status.geo.coordinates[1]
+        })
+      end
+    end
   end
 
-    task :clear => [:environment] do |t|
-      Tweet.delete_all
-    end 
+  task :clear => [:environment] do |t|
+    Tweet.delete_all
+  end
+  
 end
