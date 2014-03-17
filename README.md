@@ -3,7 +3,7 @@
 - Tracks tweets with the word "home" and maps it to its exact location.
 
 ###HEROKU
-[MTA SMS SERVICE](http://tweetstalker.herokuapp.com/)
+[TWEETSTALKER](http://tweetstalker.herokuapp.com/)
 
 ###Description
 
