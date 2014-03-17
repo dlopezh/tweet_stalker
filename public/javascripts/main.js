@@ -32,7 +32,7 @@ var map = new Datamap({
                 .attr("r",5)
                 .attr("fill", "#30FF30")
                 .on("mouseover",function(d){
-                    d3.select(this).attr("r", 5);
+                    d3.select(this).attr("r", 3);
                     $('#tweet-text').text(d.content);
                 })
                 .on("click",function(d){
@@ -40,8 +40,6 @@ var map = new Datamap({
                     window.open('http://maps.google.com/maps?q='+ d.longitude + ',' + d.latitude, '_blank');    
                 })
                 .on("mouseout", function(d){
-                    d3.select(this).attr("r", 1);
-                    $('#tweet-text').text("");
                     d3.select(this).attr("fill", "yellow");
                 })
                 .transition()
