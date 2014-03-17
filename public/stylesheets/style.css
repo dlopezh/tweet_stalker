@@ -6,10 +6,19 @@ body {
 	color: grey;
 	font-size: 20px;
 	position: absolute;
+	margin-top: -10px;
+}
+
+.container hr {
+	border-color: #343434;
 }
 
 .container {
-	margin-bottom: 50px;
+	margin-bottom: 10px;
+}
+
+.container p {
+	color: #484848;
 }
 
 #map {
