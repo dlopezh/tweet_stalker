@@ -65,10 +65,11 @@ function mapPoints(){
                 .on("mouseout", function(d){
                     d3.select(this).attr("r", 1);
                     $('#tweet-text').text("");
+                    d3.select(this).attr("fill", "yellow");
                 })
                 .transition()
                 .duration(700)
-                .attr("r",1)
+                .attr("r",2)
                 .attr("fill", "steelblue")
                 .attr("cx", function(d) {
                     return map.projection([d.latitude, d.longitude])[0];

@@ -16,21 +16,21 @@ namespace :tweet do
     @client = TweetStream::Client.new
 
     @client.on_delete do |status_id, user_id|
-           Tweet.delete(status_id)
-           puts "deleted".red
-        end
+      Tweet.delete(status_id)
+      puts "deleted".red
+    end
 
-        @client.on_scrub_geo do |up_to_status_id, user_id|
-          Tweet.where(:status_id <= up_to_status_id)
-          puts "scrubbed".red
-      end
+    @client.on_scrub_geo do |up_to_status_id, user_id|
+      Tweet.where(:status_id <= up_to_status_id)
+      puts "scrubbed".red
+    end
 
-      @client.on_limit do |discarded_count|
+    @client.on_limit do |discarded_count|
           puts "Dicarded Count: #{discarded_count}".red
         end
 
-        @client.on_error do |message|
-      puts "Error message: #{message}".red
+    @client.on_error do |message|
+         puts "Error message: #{message}".red
       @client.stop          
         end
 
