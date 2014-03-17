@@ -2,25 +2,20 @@ body {
 	background-color: #191919 !important;
 }
 
-#tweet {
-}
-
 #tweet-text {
-	text-align: center;
-	line-height: 100px;
-	position: absolute;
 	color: grey;
-	font-size: 24px;
-	float: right;
+	font-size: 20px;
+	position: absolute;
 }
 
-h1 {
+.container {
+	margin-bottom: 50px;
+}
+
+#map {
+	overflow: hidden;
 }
 
 svg {
-	margin-top: -10px;
-}
-
-circle {
-	
+	margin-bottom: -80px;
 }
