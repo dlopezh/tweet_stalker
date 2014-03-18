@@ -48,7 +48,8 @@ namespace :tweet do
       if status.is_a?(Twitter::Tweet) &&                    # Checks if tweet is a proper tweet object
           status.geo.respond_to?('coordinates') &&          # Checks if tweet has coordinates
           status.reply? == false &&                         # Checks that tweet is not a reply
-          status.text.to_s.include?(args[:arguments]) 
+          status.text.to_s.include?(args[:arguments])
+          puts status.text.green                            #For heroku log purposes
         Tweet.create ({
           name: status.user.name,
           content: status.text.gsub(/https?:\/\/[\S]+/, "").gsub(/[^a-zA-Z0-9&@#]/, " "),  #Cleans tweet, deletes urls and emoticons
