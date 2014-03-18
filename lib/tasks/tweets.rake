@@ -50,6 +50,8 @@ namespace :tweet do
           status.reply? == false &&                         # Checks that tweet is not a reply
           status.text.to_s.include?(args[:arguments])
           puts status.text.green                            #For heroku log purposes
+          puts status.geo.coordinates[0].to_s.blue
+          puts status.geo.coordinates[1].to_s.blue
         Tweet.create ({
           name: status.user.name,
           content: status.text.gsub(/https?:\/\/[\S]+/, "").gsub(/[^a-zA-Z0-9&@#]/, " "),  #Cleans tweet, deletes urls and emoticons
