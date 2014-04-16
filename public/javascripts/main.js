@@ -58,5 +58,8 @@ var map = new Datamap({
 
 
 $(function() {
-    setInterval(drawTweets, 2000);
+    setTimeout(function fetch(){
+        drawTweets();
+        setTimeout(fetch,5000);
+    },0)
 });
